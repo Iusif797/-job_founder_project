@@ -4,7 +4,7 @@ import { LeadCard } from './components/LeadCard';
 import { ProposalModal } from './components/ProposalModal';
 import { findLeads } from './services/geminiService';
 import { Lead, LoadingState, SearchFilters } from './types';
-import { Search, MapPin, Code2, AlertCircle, Loader2, Calendar, Filter, Globe, Star, LayoutGrid, Rocket, X, Menu, SlidersHorizontal, ChevronUp, ChevronDown, Briefcase, Zap } from 'lucide-react';
+import { Search, MapPin, Code2, AlertCircle, Loader2, Calendar, Filter, Globe, Star, LayoutGrid, Rocket, SlidersHorizontal, ChevronUp, ChevronDown, Briefcase, Zap } from 'lucide-react';
 
 const App: React.FC = () => {
   // Theme State

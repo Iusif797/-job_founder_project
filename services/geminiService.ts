@@ -1,7 +1,19 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { Lead } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Safely access environment variable to prevent "process is not defined" crash in browser
+const getApiKey = () => {
+  try {
+    if (typeof process !== 'undefined' && process.env) {
+      return process.env.API_KEY;
+    }
+  } catch (e) {
+    console.error("Error accessing API key environment variable", e);
+  }
+  return "";
+};
+
+const ai = new GoogleGenAI({ apiKey: getApiKey() });
 
 // Validation Helpers
 const isValidEmail = (email: string) => {
@@ -15,7 +27,6 @@ const isValidPhone = (phone: string) => {
 
 const isValidTelegram = (tg: string) => {
   // Checks for @username or t.me/username patterns
-  // Now simpler to accept raw input but filter out obvious garbage
   return /@?[a-zA-Z0-9_]{4,}/.test(tg) || /t\.me\/[a-zA-Z0-9_]{4,}/.test(tg);
 };
 
